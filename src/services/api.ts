@@ -20,9 +20,10 @@ export const BACKDROP_PATH = "https://image.tmdb.org/t/p/original";
  */
 export function getApiKey(): string {
   const env =
-    (import.meta.env.VITE_REACT_APP_KEY as string | undefined) ??
-    (import.meta.env.VITE_TMDB_KEY as string | undefined) ??
-    (import.meta.env.REACT_APP_KEY as string | undefined);
+    (import.meta.env["VITE_REACT_APP_KEY"] as string | undefined) ??
+    (import.meta.env["VITE_TMDB_KEY"] as string | undefined) ??
+    (import.meta.env["REACT_APP_KEY"] as string | undefined);
+
 
   if (env) return env;
 
