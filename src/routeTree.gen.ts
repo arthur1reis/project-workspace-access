@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuscaRouteImport } from './routes/busca'
+import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as FavoritosRouteImport } from './routes/favoritos'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MinhaListaRouteImport } from './routes/minha-lista'
 import { Route as CategoriaSlugRouteImport } from './routes/categoria.$slug'
 import { Route as FilmeIdRouteImport } from './routes/filme.$id'
 
@@ -22,6 +26,26 @@ const IndexRoute = IndexRouteImport.update({
 const BuscaRoute = BuscaRouteImport.update({
   id: '/busca',
   path: '/busca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritosRoute = FavoritosRouteImport.update({
+  id: '/favoritos',
+  path: '/favoritos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MinhaListaRoute = MinhaListaRouteImport.update({
+  id: '/minha-lista',
+  path: '/minha-lista',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CategoriaSlugRoute = CategoriaSlugRouteImport.update({
@@ -38,12 +62,20 @@ const FilmeIdRoute = FilmeIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
+  '/cadastro': typeof CadastroRoute
+  '/favoritos': typeof FavoritosRoute
+  '/login': typeof LoginRoute
+  '/minha-lista': typeof MinhaListaRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
   '/filme/$id': typeof FilmeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
+  '/cadastro': typeof CadastroRoute
+  '/favoritos': typeof FavoritosRoute
+  '/login': typeof LoginRoute
+  '/minha-lista': typeof MinhaListaRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
   '/filme/$id': typeof FilmeIdRoute
 }
@@ -51,20 +83,53 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
+  '/cadastro': typeof CadastroRoute
+  '/favoritos': typeof FavoritosRoute
+  '/login': typeof LoginRoute
+  '/minha-lista': typeof MinhaListaRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
   '/filme/$id': typeof FilmeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/busca' | '/categoria/$slug' | '/filme/$id'
+  fullPaths:
+    | '/'
+    | '/busca'
+    | '/cadastro'
+    | '/favoritos'
+    | '/login'
+    | '/minha-lista'
+    | '/categoria/$slug'
+    | '/filme/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/busca' | '/categoria/$slug' | '/filme/$id'
-  id: '__root__' | '/' | '/busca' | '/categoria/$slug' | '/filme/$id'
+  to:
+    | '/'
+    | '/busca'
+    | '/cadastro'
+    | '/favoritos'
+    | '/login'
+    | '/minha-lista'
+    | '/categoria/$slug'
+    | '/filme/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/busca'
+    | '/cadastro'
+    | '/favoritos'
+    | '/login'
+    | '/minha-lista'
+    | '/categoria/$slug'
+    | '/filme/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuscaRoute: typeof BuscaRoute
+  CadastroRoute: typeof CadastroRoute
+  FavoritosRoute: typeof FavoritosRoute
+  LoginRoute: typeof LoginRoute
+  MinhaListaRoute: typeof MinhaListaRoute
   CategoriaSlugRoute: typeof CategoriaSlugRoute
   FilmeIdRoute: typeof FilmeIdRoute
 }
@@ -83,6 +148,34 @@ declare module '@tanstack/react-router' {
       path: '/busca'
       fullPath: '/busca'
       preLoaderRoute: typeof BuscaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favoritos': {
+      id: '/favoritos'
+      path: '/favoritos'
+      fullPath: '/favoritos'
+      preLoaderRoute: typeof FavoritosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/minha-lista': {
+      id: '/minha-lista'
+      path: '/minha-lista'
+      fullPath: '/minha-lista'
+      preLoaderRoute: typeof MinhaListaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/categoria/$slug': {
@@ -105,6 +198,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuscaRoute: BuscaRoute,
+  CadastroRoute: CadastroRoute,
+  FavoritosRoute: FavoritosRoute,
+  LoginRoute: LoginRoute,
+  MinhaListaRoute: MinhaListaRoute,
   CategoriaSlugRoute: CategoriaSlugRoute,
   FilmeIdRoute: FilmeIdRoute,
 }
