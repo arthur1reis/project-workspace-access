@@ -27,3 +27,33 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## CineApp — aplicação de filmes (TMDB)
+
+### Configuração da API
+A chave do TMDB vem do arquivo `.env` (copie de `.env.example`):
+
+```
+VITE_REACT_APP_KEY=sua_chave_do_tmdb
+```
+
+No projeto original do professor a variável é `REACT_APP_KEY`; aqui o Vite exige o prefixo `VITE_`.
+Nenhum componente acessa a chave diretamente — tudo passa por `src/services/api.ts`.
+
+### Executar
+```
+npm install
+npm run dev      # equivalente ao npm start do Create React App
+```
+
+### Estrutura
+```
+src/
+  components/  Header, CategoryMenu, SearchBar, MovieCard, MovieList,
+               FavoriteButton, CommentSection, FavoritesPage, ApiKeyNotice
+  routes/      index (Home), categoria.$slug, busca, filme.$id,
+               favoritos, minha-lista, login, cadastro
+  services/    api.ts (todas as chamadas ao TMDB)
+  context/     AuthContext.tsx (cadastro, login, logout, sessão)
+  utils/       storage.ts (favoritos e comentários por usuário)
+```
