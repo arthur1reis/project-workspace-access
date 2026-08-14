@@ -1,16 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { zodValidator, fallback } from "@tanstack/zod-adapter";
-import { z } from "zod";
 import { searchMovies } from "@/services/api";
 import { MovieList } from "@/components/MovieList";
 
-const searchSchema = z.object({
-  q: fallback(z.string(), "").default(""),
-});
-
 export const Route = createFileRoute("/busca")({
-  validateSearch: zodValidator(searchSchema),
+  validateSearch: (search: Record<string, unknown>) => ({
+    q: typeof search["q"] === "string" ? (search["q"] as string) : "",
+  }),
   head: () => ({
     meta: [
       { title: "Resultados da pesquisa — CineApp" },
